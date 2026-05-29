@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { posts } from '@wix/blog';
+import { wixImageToUrl } from '../lib/wix-image';
 
 let blogPosts = [];
 let error = null;
@@ -26,7 +27,7 @@ const formatDate = (dateString) => {
 };
 
 const getImageUrl = (post) => {
-  return post?.media?.wixMedia?.image?.url
+  return wixImageToUrl(post?.media?.wixMedia?.image)
       || 'https://images.unsplash.com/photo-1549366021-9f761d450615?auto=format&fit=crop&w=1600&q=80';
 };
 ---

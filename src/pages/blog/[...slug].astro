@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import { posts } from '@wix/blog';
 import { ricosToHtml } from '../../lib/ricos';
+import { wixImageToUrl } from '../../lib/wix-image';
 
 const { slug } = Astro.params;
 
@@ -24,9 +25,7 @@ if (!post && !error) {
 }
 
 const formatDate = (d: any) => d ? new Date(d).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }).toUpperCase() : '';
-const coverUrl = post?.media?.wixMedia?.image && typeof post.media.wixMedia.image === 'string'
-  ? `https://static.wixstatic.com/media/${post.media.wixMedia.image.replace(/^wix:image:\/\/v1\//, '').split('/')[0]}`
-  : post?.media?.wixMedia?.image?.url ?? null;
+const coverUrl = wixImageToUrl(post?.media?.wixMedia?.image);
 
 const bodyHtml = post ? ricosToHtml(post.richContent) : '';
 ---
