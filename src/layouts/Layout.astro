@@ -1,0 +1,169 @@
+<!doctype html>
+<html class="dark" lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Wild Frame Photography</title>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+		<script is:inline src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+		<script is:inline>
+			tailwind.config = {
+				darkMode: "class",
+				theme: {
+					extend: {
+						colors: {
+							"primary-fixed-dim": "#e5c273",
+							"on-tertiary-container": "#303e6d",
+							"inverse-on-surface": "#313030",
+							"on-error": "#690005",
+							"surface-container-lowest": "#0e0e0e",
+							"on-tertiary-fixed-variant": "#364474",
+							"inverse-primary": "#755b16",
+							"secondary-container": "#494741",
+							"primary-container": "#c9a85c",
+							"surface": "#131313",
+							"on-tertiary": "#1f2e5c",
+							"on-secondary": "#32302b",
+							"on-tertiary-fixed": "#061846",
+							"on-secondary-fixed": "#1d1c17",
+							"on-surface": "#e5e2e1",
+							"outline-variant": "#4d4638",
+							"surface-dim": "#131313",
+							"secondary": "#cac6be",
+							"secondary-fixed": "#e7e2da",
+							"surface-tint": "#e5c273",
+							"on-error-container": "#ffdad6",
+							"error": "#ffb4ab",
+							"surface-container-high": "#2a2a2a",
+							"on-primary-container": "#523d00",
+							"primary": "#e6c374",
+							"on-surface-variant": "#d0c5b3",
+							"surface-container": "#20201f",
+							"surface-bright": "#393939",
+							"primary-fixed": "#ffdf9a",
+							"surface-variant": "#353535",
+							"on-secondary-container": "#b9b5ad",
+							"on-primary-fixed-variant": "#5a4300",
+							"on-primary-fixed": "#251a00",
+							"on-secondary-fixed-variant": "#494741",
+							"tertiary-fixed": "#dce1ff",
+							"surface-container-low": "#1c1b1b",
+							"tertiary-container": "#9caae0",
+							"surface-container-highest": "#353535",
+							"on-background": "#e5e2e1",
+							"background": "#131313",
+							"outline": "#99907f",
+							"on-primary": "#3f2e00",
+							"tertiary": "#b7c5fd",
+							"secondary-fixed-dim": "#cac6be",
+							"inverse-surface": "#e5e2e1",
+							"error-container": "#93000a",
+							"tertiary-fixed-dim": "#b6c4fc"
+						},
+						spacing: {
+							"unit": "8px",
+							"container-max": "1440px",
+							"gutter": "24px",
+							"margin-mobile": "20px",
+							"margin-desktop": "64px",
+							"margin-tablet": "32px"
+						},
+						fontFamily: {
+							"headline-md": ["Playfair Display"],
+							"body-lg": ["Inter"],
+							"caption": ["Inter"],
+							"label-md": ["Inter"],
+							"headline-lg-mobile": ["Playfair Display"],
+							"display-lg-mobile": ["Playfair Display"],
+							"display-lg": ["Playfair Display"],
+							"body-md": ["Inter"],
+							"headline-lg": ["Playfair Display"]
+						},
+						fontSize: {
+							"headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "400"}],
+							"body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0.01em", "fontWeight": "400"}],
+							"caption": ["14px", {"lineHeight": "1.4", "fontWeight": "400"}],
+							"label-md": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600"}],
+							"headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "400"}],
+							"display-lg-mobile": ["48px", {"lineHeight": "1.1", "fontWeight": "700"}],
+							"display-lg": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+							"body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+							"headline-lg": ["48px", {"lineHeight": "1.2", "fontWeight": "400"}]
+						}
+					},
+				},
+			}
+		</script>
+	</head>
+	<body class="text-on-surface font-body-md overflow-x-hidden bg-background min-h-screen">
+		<header class="fixed top-0 w-full z-50 bg-transparent backdrop-blur-xl no-border bg-surface/10 flat no shadows transition-all duration-300">
+			<nav class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-unit max-w-container-max mx-auto h-20">
+				<div class="flex items-center gap-4">
+					<span class="material-symbols-outlined text-primary cursor-pointer hover:scale-105 transition-transform duration-300">menu</span>
+					<a href="/" class="font-headline-md text-headline-md text-primary tracking-tighter cursor-pointer no-underline">WILD FRAME</a>
+				</div>
+				<div class="hidden md:flex gap-12 font-label-md text-label-md uppercase tracking-widest">
+					<a class="text-primary border-b border-primary pb-1" href="/">Home</a>
+					<a class="text-on-surface hover:text-primary transition-colors hover:scale-105 transition-transform duration-300" href="/gallery">Gallery</a>
+					<a class="text-on-surface hover:text-primary transition-colors hover:scale-105 transition-transform duration-300" href="/blog">Blog</a>
+					<a class="text-on-surface hover:text-primary transition-colors hover:scale-105 transition-transform duration-300" href="/shop">Shop</a>
+				</div>
+				<div class="flex items-center gap-6">
+					<span class="material-symbols-outlined text-primary cursor-pointer hover:scale-105 transition-transform duration-300">search</span>
+					<a href="/cart" class="text-primary hover:scale-105 transition-transform duration-300"><span class="material-symbols-outlined">shopping_cart</span></a>
+				</div>
+			</nav>
+		</header>
+		<slot />
+		<footer class="w-full mt-20 border-t border-outline-variant bg-surface-container-lowest dark:bg-surface-container-lowest">
+			<div class="flex flex-col md:flex-row justify-between items-start px-margin-mobile md:px-margin-desktop py-20 max-w-container-max mx-auto gap-12">
+				<div class="max-w-sm">
+					<span class="font-headline-md text-headline-md text-primary mb-6 block">WILD FRAME</span>
+					<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Dedicated to the preservation of wild places and the animals that inhabit them through the power of fine art photography.</p>
+				</div>
+				<div class="grid grid-cols-2 md:grid-cols-3 gap-16 font-body-md text-body-md">
+					<div class="flex flex-col gap-4">
+						<span class="font-label-md text-label-md text-primary uppercase tracking-widest">Explore</span>
+						<a class="text-on-surface-variant hover:text-primary transition-colors" href="/gallery">Gallery</a>
+						<a class="text-on-surface-variant hover:text-primary transition-colors" href="/blog">Blog</a>
+						<a class="text-on-surface-variant hover:text-primary transition-colors" href="/shop">Shop</a>
+					</div>
+					<div class="flex flex-col gap-4">
+						<span class="font-label-md text-label-md text-primary uppercase tracking-widest">Connect</span>
+						<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Instagram</a>
+						<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Twitter</a>
+						<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">About</a>
+					</div>
+					<div class="flex flex-col gap-4">
+						<span class="font-label-md text-label-md text-primary uppercase tracking-widest">Legal</span>
+						<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+						<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Use</a>
+					</div>
+				</div>
+			</div>
+			<div class="px-margin-mobile md:px-margin-desktop py-10 max-w-container-max mx-auto border-t border-outline-variant/10 text-center md:text-left">
+				<p class="font-label-md text-label-md text-on-surface-variant/60">© 2024 WILD FRAME PHOTOGRAPHY. ALL RIGHTS RESERVED.</p>
+			</div>
+		</footer>
+		<script is:inline>
+			window.addEventListener('scroll', () => {
+				const header = document.querySelector('header');
+				if (window.pageYOffset > 50) {
+					header.classList.add('backdrop-blur-2xl', 'bg-surface/80');
+					header.classList.remove('bg-transparent', 'bg-surface/10');
+				} else {
+					header.classList.remove('backdrop-blur-2xl', 'bg-surface/80');
+					header.classList.add('bg-transparent', 'bg-surface/10');
+				}
+			});
+		</script>
+	</body>
+</html>
+
+<style is:global>
+	.material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+	body { background-color: #131313; }
+</style>

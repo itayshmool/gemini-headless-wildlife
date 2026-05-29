@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Playfair+Display:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed-dim": "#e5c273",
+                    "on-tertiary-container": "#303e6d",
+                    "inverse-on-surface": "#313030",
+                    "on-error": "#690005",
+                    "surface-container-lowest": "#0e0e0e",
+                    "on-tertiary-fixed-variant": "#364474",
+                    "inverse-primary": "#755b16",
+                    "secondary-container": "#494741",
+                    "primary-container": "#c9a85c",
+                    "surface": "#131313",
+                    "on-tertiary": "#1f2e5c",
+                    "on-secondary": "#32302b",
+                    "on-tertiary-fixed": "#061846",
+                    "on-secondary-fixed": "#1d1c17",
+                    "on-surface": "#e5e2e1",
+                    "outline-variant": "#4d4638",
+                    "surface-dim": "#131313",
+                    "secondary": "#cac6be",
+                    "secondary-fixed": "#e7e2da",
+                    "surface-tint": "#e5c273",
+                    "on-error-container": "#ffdad6",
+                    "error": "#ffb4ab",
+                    "surface-container-high": "#2a2a2a",
+                    "on-primary-container": "#523d00",
+                    "primary": "#e6c374",
+                    "on-surface-variant": "#d0c5b3",
+                    "surface-container": "#20201f",
+                    "surface-bright": "#393939",
+                    "primary-fixed": "#ffdf9a",
+                    "surface-variant": "#353535",
+                    "on-secondary-container": "#b9b5ad",
+                    "on-primary-fixed-variant": "#5a4300",
+                    "on-primary-fixed": "#251a00",
+                    "on-secondary-fixed-variant": "#494741",
+                    "tertiary-fixed": "#dce1ff",
+                    "surface-container-low": "#1c1b1b",
+                    "tertiary-container": "#9caae0",
+                    "surface-container-highest": "#353535",
+                    "on-background": "#e5e2e1",
+                    "background": "#131313",
+                    "outline": "#99907f",
+                    "on-primary": "#3f2e00",
+                    "tertiary": "#b7c5fd",
+                    "secondary-fixed-dim": "#cac6be",
+                    "inverse-surface": "#e5e2e1",
+                    "error-container": "#93000a",
+                    "tertiary-fixed-dim": "#b6c4fc"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "unit": "8px",
+                    "container-max": "1440px",
+                    "gutter": "24px",
+                    "margin-mobile": "20px",
+                    "margin-desktop": "64px",
+                    "margin-tablet": "32px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Playfair Display"],
+                    "body-lg": ["Inter"],
+                    "caption": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-lg-mobile": ["Playfair Display"],
+                    "display-lg-mobile": ["Playfair Display"],
+                    "display-lg": ["Playfair Display"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Playfair Display"]
+            },
+            "fontSize": {
+                    "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                    "caption": ["14px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "400"}],
+                    "display-lg-mobile": ["48px", {"lineHeight": "1.1", "fontWeight": "700"}],
+                    "display-lg": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg": ["48px", {"lineHeight": "1.2", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .hero-gradient {
+            background: linear-gradient(to top, rgba(19, 19, 19, 1) 0%, rgba(19, 19, 19, 0.4) 50%, rgba(19, 19, 19, 0) 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary selection:text-on-primary">
+<!-- TopAppBar Navigation -->
+<header class="fixed top-0 w-full z-50 bg-transparent backdrop-blur-xl no-border bg-surface/10">
+<nav class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-unit max-w-container-max mx-auto">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:scale-105 transition-transform duration-300">menu</span>
+<span class="font-headline-md text-headline-md text-primary tracking-tighter">WILD FRAME</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-label-md text-label-md uppercase tracking-widest text-on-surface hover:text-primary transition-colors hover:scale-105 duration-300" href="#">Gallery</a>
+<a class="font-label-md text-label-md uppercase tracking-widest text-primary border-b border-primary pb-1 hover:scale-105 duration-300" href="#">Blog</a>
+<a class="font-label-md text-label-md uppercase tracking-widest text-on-surface hover:text-primary transition-colors hover:scale-105 duration-300" href="#">Shop</a>
+<a class="font-label-md text-label-md uppercase tracking-widest text-on-surface hover:text-primary transition-colors hover:scale-105 duration-300" href="#">About</a>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:scale-105 transition-transform duration-300">shopping_cart</span>
+</div>
+</nav>
+</header>
+<main class="pt-0">
+<!-- Featured Post Hero -->
+<section class="relative h-[707px] w-full overflow-hidden flex items-end">
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="A cinematic, high-contrast photograph of a majestic snow leopard prowling through a mountain range at twilight. The lighting is moody and low-key, emphasizing the leopard's intricate fur patterns against a background of sharp, jagged peaks. The overall aesthetic is minimalist and premium, utilizing deep charcoal shadows and subtle cool-toned highlights to create a sense of silent, observational luxury consistent with a fine-art digital gallery." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqJWkkjHaL1xzuhRjoTMLBMqYBWrx8A5ELWrV0P_25U4v1pPmwJY-2ZQ-mgfdKgMuzUUDb0hrZ0a54nt64CUQ0CyMDmakz2pCVwWRar6MEo8DVZzCw80bekMq7dNtigMOck9W6bypPEUXaGlxEQgVKWhrRB1l8LuH2nTbdm02hU1K2AcXer2GtkGJluwp28WB4WB8NEsYuh5Yu0SAdU62_-fLr6mht-zpALWfabiiXMqmwaKmK0JckW0ttOzFgxIzxXnl-K5tmbtCY"/>
+<div class="absolute inset-0 hero-gradient"></div>
+<div class="relative z-10 w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pb-20">
+<div class="max-w-3xl">
+<span class="inline-block px-3 py-1 mb-4 border border-primary text-primary font-label-md text-label-md uppercase tracking-widest">Featured Story</span>
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-6 leading-none">THE SILENT OBSERVER: WINTER IN THE HIMALAYAS</h1>
+<div class="flex items-center gap-4 mb-8">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">January 14, 2024</span>
+<span class="w-8 h-px bg-outline-variant"></span>
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">12 Min Read</span>
+</div>
+<button class="px-8 py-3 border border-primary text-primary font-label-md text-label-md uppercase tracking-widest hover:bg-primary hover:text-on-primary transition-all duration-300 active:scale-95">Read The Feature</button>
+</div>
+</div>
+</section>
+<!-- Blog Content Area -->
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-20">
+<div class="flex flex-col lg:flex-row gap-20">
+<!-- Main Grid -->
+<div class="flex-1">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-12 border-b border-outline-variant pb-4">Latest Journals</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-y-16 gap-x-12">
+<!-- Post Card 1 -->
+<article class="group">
+<div class="overflow-hidden mb-6 aspect-[4/3]">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="An intimate close-up of an African elephant's eye, revealing incredible textural detail in the weathered skin and long eyelashes. The photograph is processed in a rich, high-contrast monochrome style that fits a luxury gallery aesthetic. The lighting is soft yet directional, highlighting the rugged patterns and conveying a sense of profound wisdom and antiquity in a minimalist dark setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJQw020AKdFUgfXJpNEqhtUfszesAw6Wf-3GPNmChBv0SyEVcWALGCrWqpHRpED8YxuO5sSUCv9D9ti5HLtPnyxK0bzwSzXi9aOpd0wbdgR-BaaERBKStlcHtWiypkNxpsNRfKswsJL3IZ-eg0iw8ltf_5BFiZQfdrRXQs-MMbbqFQ-royNDx0ZDbaqL37ZV9DRKwVgIo-NtjEFBgKjqKk26Qxa-VCFypIUD2CnGE1SnmSYa_PF3GQqLizmo8Plg2TGV_XKyw7H0C2"/>
+</div>
+<span class="font-label-md text-label-md text-primary uppercase tracking-widest mb-2 block">Conservation</span>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-3 group-hover:text-primary transition-colors">GHOSTS OF THE SAVANNAH</h3>
+<p class="font-caption text-caption text-on-surface-variant mb-4">January 08, 2024</p>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2 mb-6">Documenting the delicate migration patterns of the remaining giants in the Amboseli basin during the unusual dry season.</p>
+<a class="font-label-md text-label-md text-primary-container uppercase tracking-widest border-b border-transparent hover:border-primary-container transition-all" href="#">Read More</a>
+</article>
+<!-- Post Card 2 -->
+<article class="group">
+<div class="overflow-hidden mb-6 aspect-[4/3]">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A pack of wolves moving through a dense, foggy forest at dawn. The image is ethereal and moody, with sunlight filtering through the mist in sharp rays. The composition is cinematic and wide, using a dark charcoal and misty grey palette. The focal point is a single wolf looking directly into the camera with piercing eyes, capturing a moment of raw, wild connection." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwtGctCUfYpWq0LjL21DfIzbv3jyKuI5ErR9tvNDPACCNujb2kGx9SYQnrnonsnqMu5mv1NxwrBKMwBZ5W4w7FPEa6gOtbFuMipRjiEj93MsOzjE4nyCAVvG_g7uxCyN93D6HpKi4ig0H0nf_-mE4VvuuKDsg4jWoRgAQuInglZe-5Ik1w7GgcwFV99Mqt6plkquZK3FjJguJG_Mo1ocX3BWnKRYXTt-NzcER-jjOCbpgJYPE6iYrCFdxs6ccilCdisd3-1uUs5urQ"/>
+</div>
+<span class="font-label-md text-label-md text-primary uppercase tracking-widest mb-2 block">Behavior</span>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-3 group-hover:text-primary transition-colors">THE PACK DYNAMIC</h3>
+<p class="font-caption text-caption text-on-surface-variant mb-4">December 22, 2023</p>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2 mb-6">A deep dive into the complex social structures of the Yellowstone gray wolves after three months of field observation.</p>
+<a class="font-label-md text-label-md text-primary-container uppercase tracking-widest border-b border-transparent hover:border-primary-container transition-all" href="#">Read More</a>
+</article>
+<!-- Post Card 3 -->
+<article class="group">
+<div class="overflow-hidden mb-6 aspect-[4/3]">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A portrait of a Great Gray Owl perched on a frost-covered branch in a boreal forest. The owl's feathers are rendered in exquisite detail against a soft, out-of-focus background of dark evergreens. The lighting is cool and diffused, creating a serene, minimalist atmosphere. The color palette is restricted to whites, greys, and deep greens, maintaining the premium editorial look of the blog." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEg-Ph7TGFR2KRQ80xY--rXNaUjcaIS3FcbdgmdMGKi1zSKUz-Bu1-B2RZufd4lxkVh_5nJbWCXkFNBQZjalnIToFTx1B3iAdEhHIM3C1tbBiH4HWDE-IKT8b3a37BraGiPm6cTF1n42-Rxt_ujgPPJ5QITHAqDRd2eyu9AIQ7j9U2CnHPrWpzP4yxxnLdKA2wXX8AhhPuT73YeUpLRgpa6SZNNRQY9qaGQIx1-fCPO8qCM-XUKqgOlFpS4HQP3FjHtXtRDM3dPVlB"/>
+</div>
+<span class="font-label-md text-label-md text-primary uppercase tracking-widest mb-2 block">Equipment</span>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-3 group-hover:text-primary transition-colors">OPTICS IN THE ARCTIC</h3>
+<p class="font-caption text-caption text-on-surface-variant mb-4">December 15, 2023</p>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2 mb-6">Testing the limits of modern telephoto lenses in sub-zero temperatures and the challenges of atmospheric haze.</p>
+<a class="font-label-md text-label-md text-primary-container uppercase tracking-widest border-b border-transparent hover:border-primary-container transition-all" href="#">Read More</a>
+</article>
+<!-- Post Card 4 -->
+<article class="group">
+<div class="overflow-hidden mb-6 aspect-[4/3]">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A dramatic profile shot of a male lion with a thick mane, captured during the golden hour in the Maasai Mara. The backlighting creates a glowing rim effect around the mane, contrasting sharply with the dark, underexposed shadows of the foreground. The image has a majestic, luxury editorial feel with a warm gold and deep charcoal palette that highlights the power of the subject." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMUILsko71KYDjfCwfgKLZTUQHGWS0WCkSz9Z6Y39qjMsCvW_gLY1hPCQYWilVMZp6D5_6JCDWi6gUzNRV_SfOdB_T3xfihbdz_CH9vb6pQpYW5KQu914x0fM49ng162wU4V4Vq4pnn_0IGBS1fottYEQYlfauLnMBiQdGKsm_Nlb12JOe5prgia-7iIlxdid7Il6OjOUDCeHGna9sM4MxtpbEgAnxoJMGtEEIvwM8tg-ERGf1Zop0JxOx6NHvKbLRvAC7K329MP-b"/>
+</div>
+<span class="font-label-md text-label-md text-primary uppercase tracking-widest mb-2 block">Light</span>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-3 group-hover:text-primary transition-colors">CHASING GOLDEN HOUR</h3>
+<p class="font-caption text-caption text-on-surface-variant mb-4">November 29, 2023</p>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2 mb-6">Mastering the art of backlight and silhouette when documenting the apex predators of the African plains.</p>
+<a class="font-label-md text-label-md text-primary-container uppercase tracking-widest border-b border-transparent hover:border-primary-container transition-all" href="#">Read More</a>
+</article>
+</div>
+<div class="mt-20 flex justify-center">
+<button class="px-12 py-4 border border-outline-variant text-on-surface font-label-md text-label-md uppercase tracking-widest hover:border-primary hover:text-primary transition-all duration-300">Load More Journals</button>
+</div>
+</div>
+<!-- Sidebar -->
+<aside class="w-full lg:w-[350px] space-y-16">
+<!-- Bio Section -->
+<div class="bg-surface-container-low p-8 border border-outline-variant/30">
+<h4 class="font-label-md text-label-md text-primary uppercase tracking-widest mb-6">About the Photographer</h4>
+<div class="mb-6 overflow-hidden aspect-square">
+<img class="w-full h-full object-cover grayscale" data-alt="A sophisticated black and white portrait of a wildlife photographer in their late 40s. They are wearing a dark, minimalist field jacket and holding a professional camera with a large telephoto lens. The background is a blurred, dark forest scene. The lighting is dramatic and moody, focusing on the photographer's determined expression, embodying the brand's silent and observant personality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAH_vC7VPEry-xtaTrWqOb53OUWOGnkAUK_Arwq8g0_UJozGaeQIuWK_fcaNHPrQEYmDbCYLJZiONLPqfRDFl46f7YLSa45pGuP6-pCE3gmhgDv1T4lU5rQqX21TNzkr414CyUSyghOMWFaetyvkDeKt1zRmfzdJMAeck4hUUsrwRtEj6-rzXa1HFu47rc4L5GGIJF_6sYtQBW0DlvqVBUkPSw-__gKeVcYBelBz29_P2NlctjSSRAUxj0wNhAsVYEvc4gFYP253gQZ"/>
+</div>
+<p class="font-body-md text-body-md text-on-surface mb-4">Elias Thorne has spent two decades documenting the world's most elusive creatures in their natural habitats.</p>
+<p class="font-caption text-caption text-on-surface-variant mb-6 italic">"Patience is the only gear that truly matters in the wild."</p>
+<a class="font-label-md text-label-md text-on-surface uppercase tracking-widest underline decoration-primary underline-offset-4 hover:text-primary transition-colors" href="#">Full Profile</a>
+</div>
+<!-- Categories -->
+<div>
+<h4 class="font-label-md text-label-md text-primary uppercase tracking-widest mb-6 border-b border-outline-variant pb-2">Categories</h4>
+<ul class="space-y-4">
+<li><a class="flex justify-between items-center group" href="#"><span class="font-body-md text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Conservation</span><span class="font-label-md text-label-md text-outline">12</span></a></li>
+<li><a class="flex justify-between items-center group" href="#"><span class="font-body-md text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Technique</span><span class="font-label-md text-label-md text-outline">08</span></a></li>
+<li><a class="flex justify-between items-center group" href="#"><span class="font-body-md text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Expeditions</span><span class="font-label-md text-label-md text-outline">24</span></a></li>
+<li><a class="flex justify-between items-center group" href="#"><span class="font-body-md text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Gear Reviews</span><span class="font-label-md text-label-md text-outline">05</span></a></li>
+<li><a class="flex justify-between items-center group" href="#"><span class="font-body-md text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Ethics</span><span class="font-label-md text-label-md text-outline">03</span></a></li>
+</ul>
+</div>
+<!-- Newsletter -->
+<div class="bg-primary/5 p-8 border border-primary/20">
+<h4 class="font-label-md text-label-md text-primary uppercase tracking-widest mb-4">Field Notes</h4>
+<p class="font-caption text-caption text-on-surface-variant mb-6">Receive exclusive photography tips and expedition updates directly in your inbox.</p>
+<form class="space-y-4">
+<input class="w-full bg-transparent border-b border-outline-variant focus:border-primary focus:ring-0 text-on-surface font-body-md px-0 py-2" placeholder="Email Address" type="email"/>
+<button class="w-full py-3 bg-primary text-on-primary font-label-md text-label-md uppercase tracking-widest hover:bg-primary-container transition-colors active:scale-95 duration-200">Subscribe</button>
+</form>
+</div>
+</aside>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-20 bg-surface-container-lowest border-t border-outline-variant">
+<div class="flex flex-col md:flex-row justify-between items-start px-margin-mobile md:px-margin-desktop py-20 max-w-container-max mx-auto gap-12">
+<div class="max-w-sm">
+<span class="font-headline-md text-headline-md text-primary mb-6 block">WILD FRAME</span>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8">Capturing the raw essence of the natural world through high-end cinematic photography. Each frame tells a story of survival, beauty, and silence.</p>
+<div class="flex gap-6">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer transition-colors">public</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer transition-colors">camera</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer transition-colors">mail</span>
+</div>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-12">
+<div class="flex flex-col gap-4">
+<h5 class="font-label-md text-label-md text-primary uppercase tracking-widest">Explore</h5>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Gallery</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Collections</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Exhibitions</a>
+</div>
+<div class="flex flex-col gap-4">
+<h5 class="font-label-md text-label-md text-primary uppercase tracking-widest">Journal</h5>
+<a class="font-body-md text-body-md text-primary transition-colors" href="#">Blog</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Field Notes</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Workshops</a>
+</div>
+<div class="flex flex-col gap-4">
+<h5 class="font-label-md text-label-md text-primary uppercase tracking-widest">Legal</h5>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Sale</a>
+</div>
+</div>
+</div>
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-8 border-t border-outline-variant/10 text-center md:text-left">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest opacity-50">© 2024 WILD FRAME PHOTOGRAPHY. ALL RIGHTS RESERVED.</span>
+</div>
+</footer>
+<script>
+        // Atmospheric scroll effect for header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('bg-surface/80');
+                header.classList.remove('bg-transparent');
+            } else {
+                header.classList.add('bg-transparent');
+                header.classList.remove('bg-surface/80');
+            }
+        });
+    </script>
+</body></html>

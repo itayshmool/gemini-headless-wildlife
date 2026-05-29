@@ -1,0 +1,95 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { productsV3 } from '@wix/stores';
+import { productMainImage } from '../../lib/wix-image';
+import { ricosToHtml } from '../../lib/ricos';
+import AddToCartButton from '../../components/AddToCartButton';
+
+const { slug } = Astro.params;
+
+let product: any = null;
+let error: string | null = null;
+
+try {
+  const result = await productsV3.getProductBySlug(slug!, {
+    fields: ['CURRENCY', 'PLAIN_DESCRIPTION'],
+  });
+  product = result.product ?? null;
+} catch (e: any) {
+  console.error('Failed to fetch product:', e);
+  error = e.message;
+}
+
+if (!product && !error) {
+  return Astro.redirect('/shop');
+}
+
+const formatPrice = (p: any) => {
+  const amount = p?.actualPriceRange?.minValue?.amount;
+  if (!amount) return '';
+  return `$${parseFloat(amount).toLocaleString('en-US', { minimumFractionDigits: 0 })}`;
+};
+
+const imageUrl = product ? productMainImage(product) : null;
+const descriptionHtml = product ? ricosToHtml(product.description) : '';
+const productId = product?._id ?? product?.id;
+const defaultVariantId = product?.variantsInfo?.variants?.[0]?._id
+  ?? product?.variantsInfo?.variants?.[0]?.id;
+---
+
+<Layout>
+  <main class="pt-32 pb-20">
+    {error && (
+      <div class="max-w-container-max mx-auto px-margin-desktop text-center text-error py-20">
+        <p>Unable to load this print at this time. Please try again later.</p>
+      </div>
+    )}
+
+    {product && (
+      <section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+        <a href="/shop" class="font-label-md text-label-md text-primary uppercase tracking-widest mb-8 inline-block hover:opacity-70 transition-opacity">← Back to Collection</a>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+          {/* Image */}
+          <div class="aspect-[4/5] overflow-hidden bg-surface-container-low">
+            {imageUrl && (
+              <img src={imageUrl} alt={product.name} class="w-full h-full object-cover" />
+            )}
+          </div>
+
+          {/* Detail */}
+          <div class="flex flex-col gap-8">
+            <div>
+              <span class="font-label-md text-label-md text-primary uppercase tracking-widest mb-3 block">Limited Edition</span>
+              <h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg leading-none uppercase mb-6">{product.name}</h1>
+              <div class="font-headline-md text-headline-md text-primary">{formatPrice(product)}</div>
+            </div>
+
+            {descriptionHtml && (
+              <div class="prose-wild" set:html={descriptionHtml}></div>
+            )}
+
+            <div class="border-t border-outline-variant pt-8 flex flex-col gap-4">
+              <AddToCartButton
+                client:load
+                productId={productId}
+                variantId={defaultVariantId}
+                className="w-full border border-primary text-primary py-4 font-label-md text-label-md uppercase tracking-widest hover:bg-primary hover:text-on-primary transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
+              />
+              <p class="font-caption text-caption text-on-surface-variant text-center">Archival pigment print on cotton rag. Signed and numbered. Ships in 7–10 business days.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    )}
+  </main>
+</Layout>
+
+<style>
+  .prose-wild :global(p) {
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    color: rgb(212 212 212);
+  }
+</style>

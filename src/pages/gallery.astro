@@ -1,0 +1,90 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { productsV3 } from '@wix/stores';
+import { productMainImage } from '../lib/wix-image';
+
+let files = [];
+let error = null;
+
+try {
+  const response = await productsV3.queryProducts(
+    { paging: { limit: 50 } },
+    { fields: [] }
+  );
+  files = (response.products || [])
+    .map(p => ({
+      url: productMainImage(p),
+      displayName: p.name,
+      slug: p.slug,
+    }))
+    .filter(f => f.url);
+} catch (e) {
+  console.error("Failed to fetch gallery images:", e);
+  error = e.message;
+}
+---
+
+<Layout>
+  <main class="pt-32 min-h-screen">
+    <!-- Hero Title -->
+    <section class="px-margin-desktop max-w-container-max mx-auto mb-16">
+      <h2 class="font-display-lg text-display-lg-mobile md:text-display-lg mb-4">The Collection</h2>
+      <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">A curated selection of the world's most elusive creatures, captured in their most vulnerable and majestic moments.</p>
+    </section>
+
+    {error && (
+      <div class="max-w-container-max mx-auto px-margin-desktop text-center text-error py-10">
+        <p>Our digital gallery is currently undergoing maintenance. Please check back later.</p>
+      </div>
+    )}
+
+    <!-- Category Filters -->
+    {!error && (
+      <section class="px-margin-desktop max-w-container-max mx-auto mb-12 overflow-x-auto">
+        <div class="flex gap-4 pb-4">
+          <button class="px-6 py-2 border border-primary bg-primary text-on-primary font-label-md text-label-md uppercase tracking-widest transition-all">All</button>
+          <button class="px-6 py-2 border border-outline-variant hover:border-primary text-on-surface-variant hover:text-primary font-label-md text-label-md uppercase tracking-widest transition-all">Safari</button>
+          <button class="px-6 py-2 border border-outline-variant hover:border-primary text-on-surface-variant hover:text-primary font-label-md text-label-md uppercase tracking-widest transition-all">Arctic</button>
+          <button class="px-6 py-2 border border-outline-variant hover:border-primary text-on-surface-variant hover:text-primary font-label-md text-label-md uppercase tracking-widest transition-all">Ocean</button>
+          <button class="px-6 py-2 border border-outline-variant hover:border-primary text-on-surface-variant hover:text-primary font-label-md text-label-md uppercase tracking-widest transition-all">Aerial</button>
+        </div>
+      </section>
+    )}
+
+    <!-- Masonry Grid -->
+    {!error && (
+      <section class="px-margin-desktop max-w-container-max mx-auto">
+        <div class="masonry-grid">
+          {files.map((file) => (
+            <a href={`/product/${file.slug}`} class="masonry-item relative group overflow-hidden cursor-crosshair block">
+              <img class="w-full object-cover transition-transform duration-700 group-hover:scale-105" src={file.url} alt={file.displayName} />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                <span class="font-label-md text-label-md text-primary uppercase tracking-widest mb-1">Wildlife</span>
+                <h3 class="font-headline-md text-headline-md text-on-surface uppercase">{file.displayName}</h3>
+                <p class="font-caption text-caption text-on-surface-variant">Global Wilderness</p>
+              </div>
+            </a>
+          ))}
+          {files.length === 0 && (
+             <div class="col-span-full text-center py-20">
+               <p class="text-on-surface-variant">The wilderness is quiet. No images found in our collection yet.</p>
+             </div>
+          )}
+        </div>
+      </section>
+    )}
+  </main>
+</Layout>
+
+<style>
+  .masonry-grid {
+    column-count: 1;
+    column-gap: 24px;
+  }
+  @media (min-width: 768px) { .masonry-grid { column-count: 2; } }
+  @media (min-width: 1024px) { .masonry-grid { column-count: 3; } }
+  .masonry-item {
+    break-inside: avoid;
+    margin-bottom: 24px;
+  }
+</style>

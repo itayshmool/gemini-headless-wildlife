@@ -1,0 +1,100 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { productsV3 } from '@wix/stores';
+import { productMainImage } from '../lib/wix-image';
+
+let products = [];
+let error = null;
+
+try {
+  const response = await productsV3.queryProducts(
+    { paging: { limit: 10 } },
+    { fields: [] }
+  );
+  products = response.products || [];
+} catch (e) {
+  console.error("Failed to fetch products:", e);
+  error = e.message;
+}
+
+const formatPrice = (product) => {
+  const amount = product.actualPriceRange?.minValue?.amount;
+  if (!amount) return '';
+  const num = parseFloat(amount);
+  return `$${num.toLocaleString('en-US', { minimumFractionDigits: 0 })}`;
+};
+---
+
+<Layout>
+  <main class="pt-32 pb-20">
+    <!-- Hero Section -->
+    <section class="px-margin-desktop max-w-container-max mx-auto mb-20 text-center">
+      <h2 class="font-headline-lg text-headline-lg mb-4">Limited Edition Prints</h2>
+      <p class="font-body-lg text-on-surface-variant max-w-2xl mx-auto">Acquire museum-quality archival prints from the world's most remote wildernesses. Each frame is handcrafted to preserve the silent majesty of the wild.</p>
+    </section>
+
+    {error && (
+      <div class="max-w-container-max mx-auto px-margin-desktop text-center text-error py-10">
+        <p>Unable to load prints at this time. Please browse our gallery in the meantime.</p>
+      </div>
+    )}
+
+    {!error && products.length === 0 && (
+       <div class="max-w-container-max mx-auto px-margin-desktop text-center text-on-surface-variant py-10">
+        <p>Our store is currently being updated with new limited edition releases.</p>
+      </div>
+    )}
+
+    <!-- Filter Bar -->
+    {!error && products.length > 0 && (
+      <section class="px-margin-desktop max-w-container-max mx-auto mb-12 flex flex-wrap justify-center gap-4">
+        <button class="px-6 py-2 border border-primary text-primary font-label-md text-label-md uppercase tracking-widest bg-primary/10 transition-all">All</button>
+        <button class="px-6 py-2 border border-outline text-on-surface-variant font-label-md text-label-md uppercase tracking-widest hover:border-primary hover:text-primary transition-all">Safari</button>
+        <button class="px-6 py-2 border border-outline text-on-surface-variant font-label-md text-label-md uppercase tracking-widest hover:border-primary hover:text-primary transition-all">Arctic</button>
+        <button class="px-6 py-2 border border-outline text-on-surface-variant font-label-md text-label-md uppercase tracking-widest hover:border-primary hover:text-primary transition-all">Ocean</button>
+        <button class="px-6 py-2 border border-outline text-on-surface-variant font-label-md text-label-md uppercase tracking-widest hover:border-primary hover:text-primary transition-all">Aerial</button>
+      </section>
+    )}
+
+    <!-- Product Grid -->
+    {!error && products.length > 0 && (
+      <section class="px-margin-desktop max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-gutter gap-y-20">
+        {products.map((product) => (
+          <div class="product-card group relative">
+            <div class="aspect-[4/5] overflow-hidden bg-surface-container-low mb-6 relative">
+              {productMainImage(product) && (
+                <img src={productMainImage(product)} alt={product.name} class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              )}
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                <div class="flex items-center gap-2 text-on-surface">
+                  <span class="material-symbols-outlined text-[16px]">location_on</span>
+                  <span class="font-label-md text-label-md uppercase tracking-widest">Global Wilderness</span>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-col gap-4">
+              <div class="flex justify-between items-start">
+                <h3 class="font-headline-md text-[24px] tracking-tight uppercase">{product.name}</h3>
+                <span class="text-primary font-headline-md text-[24px]">{formatPrice(product)}</span>
+              </div>
+              <div class="space-y-4">
+                {product.options && product.options.length > 0 && (
+                  <div class="relative">
+                    <select class="w-full bg-transparent border-b border-outline-variant py-2 font-label-md text-label-md uppercase tracking-widest appearance-none focus:outline-none focus:border-primary cursor-pointer">
+                      <option class="bg-surface">{product.options[0].name}</option>
+                      {product.options[0].choicesSettings?.choices?.map(choice => (
+                        <option class="bg-surface">{choice.name}</option>
+                      ))}
+                    </select>
+                    <span class="material-symbols-outlined absolute right-0 top-2 pointer-events-none">expand_more</span>
+                  </div>
+                )}
+                <button class="w-full border border-primary text-primary py-4 font-label-md text-label-md uppercase tracking-widest hover:bg-primary hover:text-on-primary transition-all duration-300">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        ))}
+      </section>
+    )}
+  </main>
+</Layout>

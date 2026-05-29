@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>WILD FRAME | Gallery</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Playfair+Display:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#e5c273",
+                        "on-tertiary-container": "#303e6d",
+                        "inverse-on-surface": "#313030",
+                        "on-error": "#690005",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-tertiary-fixed-variant": "#364474",
+                        "inverse-primary": "#755b16",
+                        "secondary-container": "#494741",
+                        "primary-container": "#c9a85c",
+                        "surface": "#131313",
+                        "on-tertiary": "#1f2e5c",
+                        "on-secondary": "#32302b",
+                        "on-tertiary-fixed": "#061846",
+                        "on-secondary-fixed": "#1d1c17",
+                        "on-surface": "#e5e2e1",
+                        "outline-variant": "#4d4638",
+                        "surface-dim": "#131313",
+                        "secondary": "#cac6be",
+                        "secondary-fixed": "#e7e2da",
+                        "surface-tint": "#e5c273",
+                        "on-error-container": "#ffdad6",
+                        "error": "#ffb4ab",
+                        "surface-container-high": "#2a2a2a",
+                        "on-primary-container": "#523d00",
+                        "primary": "#e6c374",
+                        "on-surface-variant": "#d0c5b3",
+                        "surface-container": "#20201f",
+                        "surface-bright": "#393939",
+                        "primary-fixed": "#ffdf9a",
+                        "surface-variant": "#353535",
+                        "on-secondary-container": "#b9b5ad",
+                        "on-primary-fixed-variant": "#5a4300",
+                        "on-primary-fixed": "#251a00",
+                        "on-secondary-fixed-variant": "#494741",
+                        "tertiary-fixed": "#dce1ff",
+                        "surface-container-low": "#1c1b1b",
+                        "tertiary-container": "#9caae0",
+                        "surface-container-highest": "#353535",
+                        "on-background": "#e5e2e1",
+                        "background": "#131313",
+                        "outline": "#99907f",
+                        "on-primary": "#3f2e00",
+                        "tertiary": "#b7c5fd",
+                        "secondary-fixed-dim": "#cac6be",
+                        "inverse-surface": "#e5e2e1",
+                        "error-container": "#93000a",
+                        "tertiary-fixed-dim": "#b6c4fc"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "container-max": "1440px",
+                        "gutter": "24px",
+                        "margin-mobile": "20px",
+                        "margin-desktop": "64px",
+                        "margin-tablet": "32px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Playfair Display"],
+                        "body-lg": ["Inter"],
+                        "caption": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                        "caption": ["14px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "400"}],
+                        "display-lg-mobile": ["48px", {"lineHeight": "1.1", "fontWeight": "700"}],
+                        "display-lg": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg": ["48px", {"lineHeight": "1.2", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .masonry-grid {
+            column-count: 1;
+            column-gap: 24px;
+        }
+        @media (min-width: 768px) { .masonry-grid { column-count: 2; } }
+        @media (min-width: 1024px) { .masonry-grid { column-count: 3; } }
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 24px;
+        }
+        .backdrop-blur-custom {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary selection:text-on-primary">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-transparent backdrop-blur-xl no-border bg-surface/10 flat no shadows">
+<nav class="flex justify-between items-center px-margin-desktop py-unit max-w-container-max mx-auto h-20">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:scale-105 transition-transform duration-300">menu</span>
+<h1 class="font-headline-md text-headline-md text-primary tracking-tighter">WILD FRAME</h1>
+</div>
+<div class="hidden md:flex gap-8">
+<a class="font-label-md text-label-md uppercase tracking-widest text-primary border-b border-primary pb-1 hover:scale-105 transition-transform duration-300" href="#">Gallery</a>
+<a class="font-label-md text-label-md uppercase tracking-widest text-on-surface hover:text-primary transition-colors hover:scale-105 transition-transform duration-300" href="#">Blog</a>
+<a class="font-label-md text-label-md uppercase tracking-widest text-on-surface hover:text-primary transition-colors hover:scale-105 transition-transform duration-300" href="#">Shop</a>
+<a class="font-label-md text-label-md uppercase tracking-widest text-on-surface hover:text-primary transition-colors hover:scale-105 transition-transform duration-300" href="#">About</a>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:scale-105 transition-transform duration-300">shopping_cart</span>
+</div>
+</nav>
+</header>
+<main class="pt-32 min-h-screen">
+<!-- Hero Title -->
+<section class="px-margin-desktop max-w-container-max mx-auto mb-16">
+<h2 class="font-display-lg text-display-lg-mobile md:text-display-lg mb-4">The Collection</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">A curated selection of the world's most elusive creatures, captured in their most vulnerable and majestic moments.</p>
+</section>
+<!-- Category Filters -->
+<section class="px-margin-desktop max-w-container-max mx-auto mb-12 overflow-x-auto">
+<div class="flex gap-4 pb-4">
+<button class="px-6 py-2 border border-primary bg-primary text-on-primary font-label-md text-label-md uppercase tracking-widest transition-all">All</button>
+<button class="px-6 py-2 border border-outline-variant hover:border-primary text-on-surface-variant hover:text-primary font-label-md text-label-md uppercase tracking-widest transition-all">Safari</button>
+<button class="px-6 py-2 border border-outline-variant hover:border-primary text-on-surface-variant hover:text-primary font-label-md text-label-md uppercase tracking-widest transition-all">Arctic</button>
+<button class="px-6 py-2 border border-outline-variant hover:border-primary text-on-surface-variant hover:text-primary font-label-md text-label-md uppercase tracking-widest transition-all">Ocean</button>
+<button class="px-6 py-2 border border-outline-variant hover:border-primary text-on-surface-variant hover:text-primary font-label-md text-label-md uppercase tracking-widest transition-all">Aerial</button>
+</div>
+</section>
+<!-- Masonry Grid -->
+<section class="px-margin-desktop max-w-container-max mx-auto">
+<div class="masonry-grid">
+<!-- Item 1 -->
+<div class="masonry-item relative group overflow-hidden cursor-crosshair" onclick="openLightbox('The Monarch', 'Serengeti, Tanzania', 'Oct 2023', 'ISO 400 | 400mm | f/2.8 | 1/1000s')">
+<img class="w-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A powerful cinematic portrait of a male lion standing atop a sun-bleached rock in the vast Serengeti plains during the golden hour. The soft amber light catches his majestic mane and creates a dramatic silhouette against the deepening blue of the horizon. The image is captured with a shallow depth of field, focusing sharply on the lion's intense, amber-colored eyes, embodying a sense of silent, premium luxury and untamed power." src="https://lh3.googleusercontent.com/aida-public/AB6AXuArVeSpiGoTTiin4D09_cIHJfMe2jpbdfQXtC0BGCDHNltvL4AJ8P7E_caPR2v3VUiNQuYcN4ahQadQ3AmpXxakU-UZcw2FIx4rf41CE_5QQKRWLAOnKB5Crnu9dilfnkR3SPFoezZUhiNt9VATmY4uhcdcDsJQt-A1Mc70CJstVYoy8T6otUu4bmn6swcI_xj0Rr4goqGfGefQIjmkMzAj0NZWBiC6Hbe1TNISPbzPNr5kReN_WhvYPMNom9LrbEuUpvi7_aNEOU5g"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+<span class="font-label-md text-label-md text-primary uppercase tracking-widest mb-1">Safari</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">The Monarch</h3>
+<p class="font-caption text-caption text-on-surface-variant">Serengeti, Tanzania</p>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="masonry-item relative group overflow-hidden cursor-crosshair" onclick="openLightbox('Glacial Drift', 'Svalbard, Norway', 'Jan 2024', 'ISO 800 | 600mm | f/4.0 | 1/2000s')">
+<img class="w-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A minimalist and high-contrast scene featuring a lone polar bear traversing a fractured ice floe in Svalbard. The environment is a pristine expanse of cool whites and deep, dark charcoal waters under a heavy, overcast sky. The composition uses negative space to emphasize the isolation and resilience of the subject, presented in a cinematic, editorial style with clinical precision and a reverent, silent atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzgHmpV0cYvds48IOAHhfyY9IeHeyjCFGmgwnRa1wMJMwcMl3VsUNH9G8snLldQWPFxtaGt1IoG9rcT7YR9GcTbLQafV-Vu-1i0LRb4q6e22tngwJptq7u7_ggbzzuUDIatgypzOmLYl8j8b8Vkt8uKwo9qNKlo_YV2SZN63GU7qRemb7rZ9Pt4zF-bFdsv71RRS3qi3AP3l1LnEZn4d5ZkfJZTxboC3D3qYMMCJmBg2OHK3aLpovUUg8kdR18TT_K535JcbXCzdGt"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+<span class="font-label-md text-label-md text-primary uppercase tracking-widest mb-1">Arctic</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Glacial Drift</h3>
+<p class="font-caption text-caption text-on-surface-variant">Svalbard, Norway</p>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="masonry-item relative group overflow-hidden cursor-crosshair" onclick="openLightbox('Shadow of the Deep', 'Ningaloo Reef, Australia', 'May 2023', 'ISO 200 | 16mm | f/8.0 | 1/250s')">
+<img class="w-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="An ethereal underwater shot of a whale shark swimming through sun-dappled waters of the Ningaloo Reef. Beams of light pierce the turquoise surface, illuminating the shark's unique pattern of spots against the dark indigo depths below. The shot is wide-angle and cinematic, capturing the immense scale of the creature in a way that feels exclusive and awe-inspiring, maintaining a high-end digital gallery aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdgUOX0SMIidOCPPYbNzET08BKa5czSdB8MrhJlGOcMGU5cbOikeuE7CXL-cN_-0GOs9Ua6lSQW-d5-6wPWaEI8kG_dALFlGgxdLHMZkmJBKOQ_fHGJ-ROcVKoRjId_8kx2n1OSebL_EDeSd8vW5l7WXSfNabhDUwFaLeCjCJyeNP74ME9DS5jgMkMl-mZqkW0la_J0OOYj3Ax8X2KO8h2CCJWzXzv72yK56Zhz4BAPAh_oIUSZ4Im0ieURP47w8LFGcCFBcBI78V4"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+<span class="font-label-md text-label-md text-primary uppercase tracking-widest mb-1">Ocean</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Shadow of the Deep</h3>
+<p class="font-caption text-caption text-on-surface-variant">Ningaloo Reef, Australia</p>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="masonry-item relative group overflow-hidden cursor-crosshair" onclick="openLightbox('Verdant Flow', 'Okavango Delta, Botswana', 'Mar 2023', 'ISO 100 | 35mm | f/5.6 | 1/4000s')">
+<img class="w-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A stunning aerial photograph capturing the intricate, winding waterways of the Okavango Delta. The landscape is a mosaic of deep emerald greens and shimmering sapphire blues, dotted with the silhouettes of a migrating herd of elephants. The perspective is top-down, creating an abstract, minimalist pattern that feels like a piece of high-end fine art photography, emphasized by the rich tonal depth and sharp details." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeHjnKFRpvhPwovrkVtjQ7MlRivpH8ftlLs21ZmGrFOBTCpOc5UHwIEH5u7gCpAQ0Tf6HgmoyXy9Rk51qVv1CWEnl6rO8PBtxt-iOYErb25-XZpsRjLT1lBTfxhZoFrARM1xWKGkbyGMnSWrJOXKhb7KfmqNSYiEoQI8xlJK-11D6RHbfvPskvIGOMBaGauD2EoDMYT6EAFIQ1UvKXLYbP5YkRiH9VmeWUkgWC-lQQsi1tnci0W0xE8lYGksfKkt3TDZZEv5BWxPIv"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+<span class="font-label-md text-label-md text-primary uppercase tracking-widest mb-1">Aerial</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Verdant Flow</h3>
+<p class="font-caption text-caption text-on-surface-variant">Okavango Delta, Botswana</p>
+</div>
+</div>
+<!-- Item 5 -->
+<div class="masonry-item relative group overflow-hidden cursor-crosshair" onclick="openLightbox('Amber Gaze', 'Rajasthan, India', 'Dec 2023', 'ISO 640 | 500mm | f/4.0 | 1/800s')">
+<img class="w-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A portrait of a Bengal Tiger peering through the dense, dry foliage of Ranthambore. The orange and black stripes of the tiger provide a striking contrast against the muted, earthy tones of the forest. The lighting is dappled and moody, highlighting the sharp focus on the predator's eyes. This cinematic shot evokes a sense of mystery and luxury, presented with a dark charcoal background that allows the vibrant subject to pop." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVv1iPJcMHk9z1klVkTob3EMifPuADWPfKcmOn4GwWyEORs89uPCXI-QWpTBcB7Ny_NhdbmTdYgcf-nepsYyoDumBPQyBjjfklytxHVhk-3ip0--gtG4M200vXcOiNC1iLMs_8IPAOL5ufNpn65FOr0J6jTqFmZOH8MdxsOQBgRzyCqBsL4hkxPIwLAF-apD9SX5EysrADlI9_dezFsK0FP-SYI5CRRzgFgG41Uo5dTYCElDC6QrEMrp0wcN4I1yP9r5bk0G0DEg8i"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+<span class="font-label-md text-label-md text-primary uppercase tracking-widest mb-1">Safari</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Amber Gaze</h3>
+<p class="font-caption text-caption text-on-surface-variant">Rajasthan, India</p>
+</div>
+</div>
+<!-- Item 6 -->
+<div class="masonry-item relative group overflow-hidden cursor-crosshair" onclick="openLightbox('The Wanderer', 'Antarctica', 'Nov 2023', 'ISO 200 | 200mm | f/2.8 | 1/5000s')">
+<img class="w-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A minimalist photograph of a single Emperor Penguin standing on the edge of a massive, glowing blue iceberg in Antarctica. The scene is bathed in the soft, low light of the polar sun, creating long, dramatic shadows across the snow. The aesthetic is extremely high-contrast, with the stark black and white of the penguin set against the luminous, sculptural forms of the ancient ice, evoking a feeling of exclusive arctic silence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwoU_1c4nwbH8_59fh8uACRqTEnvGloGtB4QzzmsnAAlIiti9FMjJlZoTJTJf9CPy0SbWjs3oJXRfLllcFukTHoVsB9hbs1FM2c6kjm55t7eEtLQq-8DfsMIwpqkaP3X6jkmt2lShecJAt-SS9n9QkAi_TaOX947xZuA3qZ9InSJlG02tSJn5BLgwLfq-q2ExOggrKQ4Dtj0U207KFpb3mzfKdA5cFJb3wOmkAhGn4yVQwe82UATj6abb-NFT4VWbPVlJGEVWQVaHQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+<span class="font-label-md text-label-md text-primary uppercase tracking-widest mb-1">Arctic</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">The Wanderer</h3>
+<p class="font-caption text-caption text-on-surface-variant">Antarctica</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Pagination / Load More -->
+<section class="flex justify-center mt-20 mb-10 px-margin-desktop">
+<button class="border border-primary text-primary px-12 py-4 font-label-md text-label-md uppercase tracking-[0.2em] hover:bg-primary hover:text-on-primary transition-all duration-300">Load More</button>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-20 border-t border-outline-variant bg-surface-container-lowest dark:bg-surface-container-lowest">
+<div class="flex flex-col md:flex-row justify-between items-start px-margin-desktop py-20 max-w-container-max mx-auto gap-12">
+<div class="flex flex-col gap-6">
+<h2 class="font-headline-md text-headline-md text-primary">WILD FRAME</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-sm">Capturing the silent majesty of the natural world through high-end cinematic photography.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-12">
+<div class="flex flex-col gap-4">
+<span class="font-label-md text-label-md text-primary uppercase tracking-widest">Navigation</span>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Gallery</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Blog</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Shop</a>
+</div>
+<div class="flex flex-col gap-4">
+<span class="font-label-md text-label-md text-primary uppercase tracking-widest">Support</span>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">About</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+</div>
+<div class="flex flex-col gap-4">
+<span class="font-label-md text-label-md text-primary uppercase tracking-widest">Social</span>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Instagram</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Twitter</a>
+</div>
+</div>
+</div>
+<div class="px-margin-desktop py-8 border-t border-outline-variant/30 text-center md:text-left">
+<span class="font-label-md text-label-md text-on-surface-variant/50 uppercase tracking-widest">© 2024 WILD FRAME PHOTOGRAPHY. ALL RIGHTS RESERVED.</span>
+</div>
+</footer>
+<!-- Lightbox Modal -->
+<div class="fixed inset-0 z-[100] bg-black hidden flex-col justify-center items-center opacity-0 transition-opacity duration-500" id="lightbox">
+<!-- Close Button -->
+<button class="absolute top-8 right-8 text-primary hover:scale-110 transition-transform" onclick="closeLightbox()">
+<span class="material-symbols-outlined !text-4xl">close</span>
+</button>
+<div class="w-full h-full flex flex-col md:flex-row p-8 md:p-16 gap-12">
+<!-- Image Area -->
+<div class="flex-grow flex items-center justify-center relative overflow-hidden">
+<img alt="Main Image" class="max-h-full max-w-full object-contain shadow-2xl" id="lightbox-img" src=""/>
+</div>
+<!-- Metadata Area -->
+<div class="md:w-96 flex flex-col justify-center text-left gap-8">
+<div>
+<h2 class="font-display-lg text-4xl md:text-5xl mb-2 text-primary" id="lightbox-title"></h2>
+<p class="font-body-lg text-on-surface-variant" id="lightbox-location"></p>
+</div>
+<div class="h-px bg-outline-variant w-16"></div>
+<div class="grid grid-cols-1 gap-6">
+<div>
+<span class="font-label-md text-label-md text-primary uppercase tracking-widest block mb-1">Date Captured</span>
+<p class="font-body-md text-on-surface italic" id="lightbox-date"></p>
+</div>
+<div>
+<span class="font-label-md text-label-md text-primary uppercase tracking-widest block mb-1">EXIF Data</span>
+<p class="font-body-md text-on-surface-variant font-mono text-sm uppercase tracking-tighter" id="lightbox-exif"></p>
+</div>
+</div>
+<div class="mt-8">
+<button class="w-full border border-primary text-primary px-8 py-4 font-label-md text-label-md uppercase tracking-widest hover:bg-primary hover:text-on-primary transition-all">Purchase Print</button>
+<button class="w-full mt-4 text-on-surface-variant font-label-md text-label-md uppercase tracking-widest hover:text-primary transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined !text-lg">info</span> 
+                        Full Story
+                    </button>
+</div>
+</div>
+</div>
+<!-- Navigation Placeholder -->
+<div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-12">
+<button class="text-on-surface/50 hover:text-primary transition-colors">
+<span class="material-symbols-outlined !text-3xl">chevron_left</span>
+</button>
+<span class="font-label-md text-label-md text-primary self-center tracking-widest">01 / 24</span>
+<button class="text-on-surface/50 hover:text-primary transition-colors">
+<span class="material-symbols-outlined !text-3xl">chevron_right</span>
+</button>
+</div>
+</div>
+<script>
+        function openLightbox(title, location, date, exif) {
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            const trigger = event.currentTarget;
+            const src = trigger.querySelector('img').src;
+
+            document.getElementById('lightbox-title').innerText = title;
+            document.getElementById('lightbox-location').innerText = location;
+            document.getElementById('lightbox-date').innerText = date;
+            document.getElementById('lightbox-exif').innerText = exif;
+            img.src = src;
+
+            lightbox.classList.remove('hidden');
+            lightbox.classList.add('flex');
+            setTimeout(() => {
+                lightbox.classList.remove('opacity-0');
+                lightbox.classList.add('opacity-100');
+            }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('opacity-100');
+            lightbox.classList.add('opacity-0');
+            setTimeout(() => {
+                lightbox.classList.add('hidden');
+                lightbox.classList.remove('flex');
+            }, 500);
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close on ESC
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+
+        // Filter functionality simulation
+        const filterButtons = document.querySelectorAll('button[class*="border-outline-variant"], button[class*="bg-primary"]');
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterButtons.forEach(b => {
+                    b.classList.remove('bg-primary', 'text-on-primary');
+                    b.classList.add('border-outline-variant', 'text-on-surface-variant');
+                });
+                btn.classList.add('bg-primary', 'text-on-primary');
+                btn.classList.remove('border-outline-variant', 'text-on-surface-variant');
+            });
+        });
+
+        // Sticky header transition
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('backdrop-blur-custom');
+                header.classList.add('bg-surface/60');
+            } else {
+                header.classList.remove('backdrop-blur-custom');
+                header.classList.remove('bg-surface/60');
+            }
+        });
+    </script>
+</body></html>

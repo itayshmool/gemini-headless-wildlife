@@ -1,0 +1,91 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+	<main>
+		<!-- Hero Section -->
+		<section class="relative h-screen w-full flex items-center justify-center overflow-hidden">
+		<div class="absolute inset-0 z-0">
+		<img class="w-full h-full object-cover grayscale opacity-60" data-alt="A dramatic, high-contrast black and white photograph of a lion's face appearing out of the shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjSOOpoc2cmp5bu5CqOMwh-w_4MPTTe2MoStKUIxgg_E7Sb7Px9Frg1xE_bRmEmdN0sEij_z0m4Qs8ax3AkHetkAisHEkl-9TzMVpEsIIbdkkWFHOYcOAXW1OM3fzqCHfKlAg2bDkIDpOyqsstJXVic0YNBlyvGruoBWXpKw3uwVrry1jUe7yVxTi76VC38ZEiBO6uuC1L1j_1RtIe5VapJxNfFAdJC03cq5_k_P2znWkSpTYbhVXtbKRIEHdQYHSwemhU1LE1EXb0"/>
+		<div class="absolute inset-0 bg-gradient-to-b from-transparent via-background/20 to-background"></div>
+		</div>
+		<div class="relative z-10 text-center px-margin-mobile max-w-4xl">
+		<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-6 drop-shadow-2xl">The Silent Majesty</h1>
+		<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-10 leading-relaxed">Capturing the raw essence of the wild through a cinematic lens. A collection of moments where time stands still and nature speaks in whispers.</p>
+		<div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+		<a href="/gallery" class="px-10 py-4 border border-primary text-primary font-label-md text-label-md uppercase tracking-widest hover:bg-primary hover:text-on-primary transition-all duration-500 active:scale-95 no-underline">
+								Explore Gallery
+							</a>
+		<a href="/blog" class="px-10 py-4 text-on-surface hover:text-primary font-label-md text-label-md uppercase tracking-widest underline underline-offset-8 decoration-primary/30 transition-all duration-300 no-underline">
+								Latest Stories
+							</a>
+		</div>
+		</div>
+		</section>
+		<!-- Featured Collection -->
+		<section class="py-32 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+		<div class="flex flex-col md:flex-row justify-between items-end mb-20">
+		<div class="max-w-xl">
+		<span class="font-label-md text-label-md text-primary uppercase tracking-[0.3em] block mb-4">Curated Selections</span>
+		<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">Featured Collection</h2>
+		</div>
+		<p class="font-body-md text-body-md text-on-surface-variant md:max-w-xs mt-6 md:mt-0 italic">"Art is the preservation of the soul's encounter with the infinite."</p>
+		</div>
+		<!-- Masonry Grid -->
+		<div class="columns-1 md:columns-2 lg:columns-3 gap-8">
+		<!-- Card 1 -->
+		<div class="masonry-item group relative overflow-hidden bg-surface-container border border-outline-variant/10 mb-8">
+		<div class="overflow-hidden">
+		<img class="w-full h-auto object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-in-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-emw_zvV3_kmXHFG1dGgvR_QMJzoOTCG575EvmmAH-7InQkiqWnAAKfBAD-9DjkvTQ5oFn5c8Ps_ISXdVvuhCwZeA-S0wKMytGU1RxXvSls54F_W8-jCT48scLPmWLBC67A6UdrcjFd9ODjIMfMqGxfGD7I2Aswz5qIx-8p0NGHEczhsrIFBxxs_IFEn3-kyJc5-6SepZboAzHp-rTkGJ5TbYajJRVpOFMDUotjkGbkXPdF61zHL83pgjxTbjYUMzSfGtjT80cQcn"/>
+		</div>
+		<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
+		<span class="font-label-md text-label-md text-primary uppercase tracking-widest mb-2">Serengeti, Tanzania</span>
+		<h3 class="font-headline-md text-headline-md text-on-surface">The Sentinel</h3>
+		<p class="font-caption text-caption text-on-surface-variant mt-2">Limited Edition Print Available</p>
+		</div>
+		</div>
+		<!-- Card 2 -->
+		<div class="masonry-item group relative overflow-hidden bg-surface-container border border-outline-variant/10 mb-8">
+		<div class="overflow-hidden">
+		<img class="w-full h-auto object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-in-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUVoX2g8BYC6Np6QzIcNNd32VdhcPMjakAnyYe-ZSTx2pXUr8dFaJjKf9aaLBBAx-BBeatZh0dvDKMYFfs4iEVvyGL3ZdZzIpv5xzxp1EXesaxF-Bji8tPeD-1bSMs5UZSyYmrzGNSsUVvkR2TakJW9HkCitrF1ebqWX9P2Xfjp7jFxBJ4kmhNsw5AY8SbqqiDZGOZ2eGxjiny39XxKSP4kAn7sq1VFf0zLQE7CxOiTP-YoGNzt-TkzEXyj3QIXR9cjKItRdVHZR6N"/>
+		</div>
+		<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
+		<span class="font-label-md text-label-md text-primary uppercase tracking-widest mb-2">Hokkaido, Japan</span>
+		<h3 class="font-headline-md text-headline-md text-on-surface">Winter Ghost</h3>
+		</div>
+		</div>
+		<!-- Card 3 -->
+		<div class="masonry-item group relative overflow-hidden bg-surface-container border border-outline-variant/10 mb-8">
+		<div class="overflow-hidden">
+		<img class="w-full h-auto object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-in-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALMAo4CnTpn7_BB-S-q4Q33TjxBuYj1MXtP_rygltKKzKU35epq3Tw-D_rkw1TKsVbYShbU5mBXCl_ceBYISMw7Hyqg9MOEyNPtmQmxXm4YvQhsbhec-AmzQkVSgL_kMMrelaf3HnqWJzHtmaCUo-tPcOWv4gLqhoH5PzFcs-PtaejWqYKD8Opbh4UKpk8reb3LSmQo0lAAJMB0aFuYFNki5-x5gojCE9PrkJV15u9VF_J0iYAVhVdEf_ZD_JG1DQBi6mlLJDrD7Rf"/>
+		</div>
+		<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
+		<span class="font-label-md text-label-md text-primary uppercase tracking-widest mb-2">Amboseli, Kenya</span>
+		<h3 class="font-headline-md text-headline-md text-on-surface">Desert Storm</h3>
+		</div>
+		</div>
+		</div>
+		</section>
+		<!-- Newsletter Section -->
+		<section class="mt-20 py-24 bg-surface-container-low border-y border-outline-variant/10">
+		<div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto flex flex-col items-center text-center">
+		<span class="material-symbols-outlined text-primary text-4xl mb-6">mail</span>
+		<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-4">Join the Inner Circle</h2>
+		<p class="font-body-md text-body-md text-on-surface-variant max-w-xl mb-12">Receive exclusive access to new collection releases, behind-the-scenes stories from the field, and private exhibition invitations.</p>
+		<form class="w-full max-w-md">
+		<div class="relative group">
+		<input class="w-full bg-transparent border-b border-outline text-on-surface font-body-md py-4 px-2 focus:outline-none focus:border-primary transition-colors placeholder:text-on-surface-variant/50" placeholder="Your email address" type="email"/>
+		<button class="absolute right-0 bottom-4 text-primary font-label-md text-label-md uppercase tracking-widest hover:translate-x-2 transition-transform duration-300" type="submit">
+									Subscribe
+								</button>
+		</div>
+		</form>
+		</div>
+		</section>
+	</main>
+</Layout>
+
+<style>
+	.masonry-item { break-inside: avoid; }
+</style>

@@ -1,0 +1,121 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { posts } from '@wix/blog';
+import { ricosToHtml } from '../../lib/ricos';
+
+const { slug } = Astro.params;
+
+let post: any = null;
+let error: string | null = null;
+
+try {
+  const { items } = await posts
+    .queryPosts({ fieldsets: ['RICH_CONTENT', 'CONTENT_TEXT'] })
+    .eq('slug', slug!)
+    .find();
+  post = items[0] ?? null;
+} catch (e: any) {
+  console.error('Failed to fetch post:', e);
+  error = e.message;
+}
+
+if (!post && !error) {
+  return Astro.redirect('/blog');
+}
+
+const formatDate = (d: any) => d ? new Date(d).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }).toUpperCase() : '';
+const coverUrl = post?.media?.wixMedia?.image && typeof post.media.wixMedia.image === 'string'
+  ? `https://static.wixstatic.com/media/${post.media.wixMedia.image.replace(/^wix:image:\/\/v1\//, '').split('/')[0]}`
+  : post?.media?.wixMedia?.image?.url ?? null;
+
+const bodyHtml = post ? ricosToHtml(post.richContent) : '';
+---
+
+<Layout>
+  <main class="pt-0">
+    {error && (
+      <div class="max-w-container-max mx-auto px-margin-mobile py-32 text-error text-center">
+        <p>Unable to load this journal entry. Please try again later.</p>
+      </div>
+    )}
+
+    {post && (
+      <>
+        {/* Hero */}
+        <section class="relative h-[60vh] min-h-[500px] w-full overflow-hidden flex items-end">
+          {coverUrl && (
+            <img class="absolute inset-0 w-full h-full object-cover" src={coverUrl} alt={post.title} />
+          )}
+          <div class="absolute inset-0 bg-gradient-to-t from-[#131313] via-[#131313]/60 to-transparent"></div>
+          <div class="relative z-10 w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pb-16">
+            <a href="/blog" class="font-label-md text-label-md text-primary uppercase tracking-widest mb-6 inline-block hover:opacity-70 transition-opacity">← Back to Journal</a>
+            <h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-6 leading-none uppercase">{post.title}</h1>
+            <div class="flex items-center gap-4">
+              <span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">{formatDate(post.firstPublishedDate)}</span>
+              {post.minutesToRead > 0 && (
+                <>
+                  <span class="w-8 h-px bg-outline-variant"></span>
+                  <span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">{post.minutesToRead} Min Read</span>
+                </>
+              )}
+            </div>
+          </div>
+        </section>
+
+        {/* Body */}
+        <section class="max-w-3xl mx-auto px-margin-mobile md:px-margin-desktop py-20">
+          {post.excerpt && (
+            <p class="font-body-lg text-body-lg text-primary mb-12 leading-relaxed italic border-l-2 border-primary pl-6">{post.excerpt}</p>
+          )}
+          <article class="prose-wild" set:html={bodyHtml}></article>
+        </section>
+      </>
+    )}
+  </main>
+</Layout>
+
+<style>
+  .prose-wild { color: var(--md-sys-color-on-surface, #e6e6e6); }
+  .prose-wild :global(p) {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    color: rgb(229 229 229);
+  }
+  .prose-wild :global(h2) {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    line-height: 1.2;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    color: #e6c374;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+  }
+  .prose-wild :global(h3) {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    color: #e6c374;
+  }
+  .prose-wild :global(blockquote) {
+    border-left: 2px solid #e6c374;
+    padding-left: 1.5rem;
+    margin: 2.5rem 0;
+    font-style: italic;
+    font-size: 1.25rem;
+    color: rgb(212 212 212);
+  }
+  .prose-wild :global(blockquote p) {
+    margin-bottom: 0;
+  }
+  .prose-wild :global(ul),
+  .prose-wild :global(ol) {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .prose-wild :global(li) {
+    margin-bottom: 0.5rem;
+  }
+</style>

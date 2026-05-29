@@ -1,0 +1,14 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CartView from '../components/CartView';
+---
+
+<Layout>
+  <main class="pt-32 pb-20 min-h-screen">
+    <section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+      <a href="/shop" class="font-label-md text-label-md text-primary uppercase tracking-widest mb-8 inline-block hover:opacity-70 transition-opacity">← Continue Shopping</a>
+      <h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg leading-none uppercase mb-12">Your Cart</h1>
+      <CartView client:load />
+    </section>
+  </main>
+</Layout>
