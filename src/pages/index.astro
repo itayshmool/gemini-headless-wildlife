@@ -1,8 +1,21 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const jsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'WebSite',
+	name: 'Wild Frame Photography',
+	url: 'https://www.elias-wildlife.art',
+	description: 'Fine art wildlife photography by Elias Thorne. Limited edition archival prints from the world\'s most remote wildernesses.',
+	author: {
+		'@type': 'Person',
+		name: 'Elias Thorne',
+		jobTitle: 'Wildlife Photographer',
+	},
+};
 ---
 
-<Layout>
+<Layout url="/" jsonLd={jsonLd}>
 	<main>
 		<!-- Hero Section -->
 		<section class="relative h-screen w-full flex items-center justify-center overflow-hidden">

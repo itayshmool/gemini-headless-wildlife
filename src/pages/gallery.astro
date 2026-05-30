@@ -24,7 +24,18 @@ try {
 }
 ---
 
-<Layout>
+<Layout
+  title="Gallery"
+  description="Browse the complete collection of fine art wildlife photography. Each image captures the raw beauty of nature's most elusive creatures."
+  url="/gallery"
+  jsonLd={{
+    '@context': 'https://schema.org',
+    '@type': 'ImageGallery',
+    name: 'The Collection — Wild Frame Photography',
+    description: 'A curated selection of the world\'s most elusive creatures, captured in their most vulnerable and majestic moments.',
+    url: 'https://www.elias-wildlife.art/gallery',
+  }}
+>
   <main class="pt-32 min-h-screen">
     <!-- Hero Title -->
     <section class="px-margin-desktop max-w-container-max mx-auto mb-16">

@@ -35,9 +35,43 @@ const descriptionHtml = product ? ricosToHtml(product.description) : '';
 const productId = product?._id ?? product?.id;
 const defaultVariantId = product?.variantsInfo?.variants?.[0]?._id
   ?? product?.variantsInfo?.variants?.[0]?.id;
+
+const seoTitle = product?.name;
+const plainDescription = product?.description?.plainText
+  || `${product?.name} — limited edition fine art wildlife print from Wild Frame Photography.`;
+const seoDescription = typeof plainDescription === 'string' ? plainDescription.slice(0, 160) : String(plainDescription).slice(0, 160);
+
+const priceAmount = product?.actualPriceRange?.minValue?.amount;
+const priceCurrency = product?.actualPriceRange?.minValue?.currency || 'USD';
+
+const jsonLd = product ? {
+	'@context': 'https://schema.org',
+	'@type': 'Product',
+	name: product.name,
+	description: seoDescription,
+	...(imageUrl && { image: imageUrl }),
+	url: `https://www.elias-wildlife.art/product/${slug}`,
+	brand: { '@type': 'Brand', name: 'Wild Frame Photography' },
+	...(priceAmount && {
+		offers: {
+			'@type': 'Offer',
+			price: priceAmount,
+			priceCurrency,
+			availability: 'https://schema.org/InStock',
+			url: `https://www.elias-wildlife.art/product/${slug}`,
+		},
+	}),
+} : undefined;
 ---
 
-<Layout>
+<Layout
+  title={seoTitle}
+  description={seoDescription}
+  image={imageUrl || undefined}
+  url={`/product/${slug}`}
+  type="product"
+  jsonLd={jsonLd}
+>
   <main class="pt-32 pb-20">
     {error && (
       <div class="max-w-container-max mx-auto px-margin-desktop text-center text-error py-20">

@@ -1,3 +1,33 @@
+---
+interface Props {
+	title?: string;
+	description?: string;
+	image?: string;
+	url?: string;
+	type?: string;
+	noindex?: boolean;
+	jsonLd?: Record<string, any>;
+}
+
+const SITE_NAME = 'Wild Frame Photography';
+const SITE_URL = 'https://www.elias-wildlife.art';
+const DEFAULT_DESCRIPTION = 'Fine art wildlife photography by Elias Thorne. Limited edition archival prints from the world\'s most remote wildernesses.';
+const DEFAULT_IMAGE = 'https://lh3.googleusercontent.com/aida-public/AB6AXuAjSOOpoc2cmp5bu5CqOMwh-w_4MPTTe2MoStKUIxgg_E7Sb7Px9Frg1xE_bRmEmdN0sEij_z0m4Qs8ax3AkHetkAisHEkl-9TzMVpEsIIbdkkWFHOYcOAXW1OM3fzqCHfKlAg2bDkIDpOyqsstJXVic0YNBlyvGruoBWXpKw3uwVrry1jUe7yVxTi76VC38ZEiBO6uuC1L1j_1RtIe5VapJxNfFAdJC03cq5_k_P2znWkSpTYbhVXtbKRIEHdQYHSwemhU1LE1EXb0';
+
+const {
+	title,
+	description = DEFAULT_DESCRIPTION,
+	image = DEFAULT_IMAGE,
+	url = SITE_URL,
+	type = 'website',
+	noindex = false,
+	jsonLd,
+} = Astro.props;
+
+const fullTitle = title ? `${title} — ${SITE_NAME}` : SITE_NAME;
+const canonicalUrl = url.startsWith('http') ? url : `${SITE_URL}${url}`;
+---
+
 <!doctype html>
 <html class="dark" lang="en">
 	<head>
@@ -5,7 +35,29 @@
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Wild Frame Photography</title>
+		<title>{fullTitle}</title>
+		<meta name="description" content={description} />
+		<link rel="canonical" href={canonicalUrl} />
+		{noindex && <meta name="robots" content="noindex, nofollow" />}
+
+		<!-- Open Graph -->
+		<meta property="og:title" content={fullTitle} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={image} />
+		<meta property="og:url" content={canonicalUrl} />
+		<meta property="og:type" content={type} />
+		<meta property="og:site_name" content={SITE_NAME} />
+
+		<!-- Twitter Card -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={fullTitle} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={image} />
+
+		<!-- JSON-LD -->
+		{jsonLd && (
+			<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+		)}
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
 		<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
 		<script is:inline src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>

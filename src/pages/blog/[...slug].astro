@@ -28,9 +28,33 @@ const formatDate = (d: any) => d ? new Date(d).toLocaleDateString('en-US', { mon
 const coverUrl = wixImageToUrl(post?.media?.wixMedia?.image);
 
 const bodyHtml = post ? ricosToHtml(post.richContent) : '';
+
+const seoTitle = post?.title;
+const seoDescription = post?.excerpt || `Read "${post?.title}" — a field journal entry from Wild Frame Photography.`;
+const seoImage = coverUrl || undefined;
+
+const jsonLd = post ? {
+	'@context': 'https://schema.org',
+	'@type': 'BlogPosting',
+	headline: post.title,
+	description: seoDescription,
+	...(coverUrl && { image: coverUrl }),
+	datePublished: post.firstPublishedDate,
+	...(post.lastPublishedDate && { dateModified: post.lastPublishedDate }),
+	author: { '@type': 'Person', name: 'Elias Thorne' },
+	publisher: { '@type': 'Organization', name: 'Wild Frame Photography', url: 'https://www.elias-wildlife.art' },
+	mainEntityOfPage: `https://www.elias-wildlife.art/blog/${slug}`,
+} : undefined;
 ---
 
-<Layout>
+<Layout
+  title={seoTitle}
+  description={seoDescription}
+  image={seoImage}
+  url={`/blog/${slug}`}
+  type="article"
+  jsonLd={jsonLd}
+>
   <main class="pt-0">
     {error && (
       <div class="max-w-container-max mx-auto px-margin-mobile py-32 text-error text-center">
