@@ -1,0 +1,28 @@
+# Wild Frame Photography
+
+> Fine art wildlife photography by Elias Thorne. Limited edition archival prints from the world's most remote wildernesses.
+
+Wild Frame Photography is a fine art wildlife photography studio and online print store run by photographer Elias Thorne. The site showcases cinematic wildlife images captured across Africa, Asia, and the Arctic, and sells museum-quality archival prints as limited editions.
+
+## Pages
+
+- [Home](https://www.elias-wildlife.art/): Landing page with hero imagery, featured collection, and newsletter signup.
+- [Gallery](https://www.elias-wildlife.art/gallery): The full photography collection displayed in a masonry grid. Each image links to its product page.
+- [Shop](https://www.elias-wildlife.art/shop): Browse and purchase limited edition archival prints. Prices range from $550 to $1,200.
+- [Blog](https://www.elias-wildlife.art/blog): Field journals documenting wildlife photography expeditions, gear insights, and conservation stories.
+- [Cart](https://www.elias-wildlife.art/cart): Shopping cart and checkout.
+
+## Key Facts
+
+- Photographer: Elias Thorne
+- Specialty: Wildlife and nature fine art photography
+- Print type: Archival pigment prints on cotton rag, signed and numbered
+- Price range: $550 - $1,200
+- Regions covered: Serengeti (Tanzania), Amboseli (Kenya), Hokkaido (Japan), Arctic
+- Products: 10 limited edition prints
+- Blog posts: 3 field journals
+- Shipping: 7-10 business days
+
+## Extended Info
+
+- [Full site details](https://www.elias-wildlife.art/llms-full.txt)

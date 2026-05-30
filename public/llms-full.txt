@@ -1,0 +1,69 @@
+# Wild Frame Photography — Full Site Information
+
+> Fine art wildlife photography by Elias Thorne. Limited edition archival prints from the world's most remote wildernesses.
+
+## About
+
+Wild Frame Photography is a fine art wildlife photography studio and online print store. The site is operated by Elias Thorne, a wildlife photographer who has spent two decades documenting the world's most elusive creatures in their natural habitats. His philosophy: "Patience is the only gear that truly matters in the wild."
+
+The studio's tagline is "The Silent Majesty" — capturing the raw essence of the wild through a cinematic lens. The collection focuses on moments where time stands still and nature speaks in whispers.
+
+## Products
+
+Wild Frame sells limited edition archival pigment prints on cotton rag paper. Each print is signed and numbered by the photographer. Shipping takes 7-10 business days.
+
+The collection includes 10 limited edition prints, priced between $550 and $1,200. Featured works include:
+
+- **The Sentinel** — Serengeti, Tanzania
+- **Winter Ghost** — Hokkaido, Japan
+- **Desert Storm** — Amboseli, Kenya
+
+Available print sizes vary by work. All prints are museum-quality archival grade.
+
+## Gallery
+
+The gallery presents the complete photography collection in a curated masonry layout. Subjects include lions, cranes, elephants, and other wildlife from across Africa, Asia, and the Arctic. Every gallery image links directly to its corresponding product page where prints can be purchased.
+
+## Blog / Field Journal
+
+The blog features behind-the-scenes field journals from wildlife photography expeditions. Topics include:
+
+- Expedition stories and wildlife encounters
+- Conservation and habitat preservation
+- Photography technique and gear
+- The patience and craft behind wildlife photography
+
+## Pages
+
+### Home (/)
+Landing page featuring a full-screen hero image of a lion in dramatic black and white. Includes a featured collection of three photographs (The Sentinel, Winter Ghost, Desert Storm) and a newsletter signup for exclusive access to new releases, behind-the-scenes stories, and private exhibition invitations.
+
+### Gallery (/gallery)
+"The Collection" — a curated selection of the world's most elusive creatures, captured in their most vulnerable and majestic moments. Masonry grid layout with category filters for Safari, Arctic, Ocean, and Aerial photography.
+
+### Shop (/shop)
+"Limited Edition Prints" — browse museum-quality archival prints. Grid layout showing product images, names, prices, and size options. Filter by category: Safari, Arctic, Ocean, Aerial.
+
+### Product Pages (/product/[name])
+Individual product detail pages with large product image, description, size/variant selection, and Add to Cart functionality. Each page shows "Limited Edition" designation, price, and shipping information.
+
+### Blog (/blog)
+Journal index with a featured story hero section and a grid of additional posts. Includes an "About the Photographer" sidebar with Elias Thorne's bio and portrait.
+
+### Blog Posts (/blog/[title])
+Individual journal entries with full-width cover images, reading time estimates, publication dates, and rich text content including blockquotes and section headings.
+
+### Cart (/cart)
+Shopping cart with line items, quantity controls, item removal, and checkout via Wix eCommerce.
+
+## Contact & Social
+
+- Website: https://www.elias-wildlife.art
+- Newsletter: Available via the homepage signup form
+
+## Technical
+
+- Built with Astro (SSR) on Wix Headless hosting
+- eCommerce powered by Wix Stores
+- Blog powered by Wix Blog
+- Media hosted on Wix Media Manager
