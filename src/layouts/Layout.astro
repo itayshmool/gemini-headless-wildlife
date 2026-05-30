@@ -102,14 +102,16 @@
 		<header class="fixed top-0 w-full z-50 bg-transparent backdrop-blur-xl no-border bg-surface/10 flat no shadows transition-all duration-300">
 			<nav class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-unit max-w-container-max mx-auto h-20">
 				<div class="flex items-center gap-4">
-					<span class="material-symbols-outlined text-primary cursor-pointer hover:scale-105 transition-transform duration-300">menu</span>
+					<button id="mobile-menu-toggle" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false" class="md:hidden text-primary cursor-pointer hover:scale-105 transition-transform duration-300 -ml-1">
+						<span class="material-symbols-outlined">menu</span>
+					</button>
 					<a href="/" class="font-headline-md text-headline-md text-primary tracking-tighter cursor-pointer no-underline">WILD FRAME</a>
 				</div>
 				<div class="hidden md:flex gap-12 font-label-md text-label-md uppercase tracking-widest">
-					<a class="text-primary border-b border-primary pb-1" href="/">Home</a>
-					<a class="text-on-surface hover:text-primary transition-colors hover:scale-105 transition-transform duration-300" href="/gallery">Gallery</a>
-					<a class="text-on-surface hover:text-primary transition-colors hover:scale-105 transition-transform duration-300" href="/blog">Blog</a>
-					<a class="text-on-surface hover:text-primary transition-colors hover:scale-105 transition-transform duration-300" href="/shop">Shop</a>
+					<a class="text-on-surface hover:text-primary transition-colors duration-300" href="/">Home</a>
+					<a class="text-on-surface hover:text-primary transition-colors duration-300" href="/gallery">Gallery</a>
+					<a class="text-on-surface hover:text-primary transition-colors duration-300" href="/blog">Blog</a>
+					<a class="text-on-surface hover:text-primary transition-colors duration-300" href="/shop">Shop</a>
 				</div>
 				<div class="flex items-center gap-6">
 					<span class="material-symbols-outlined text-primary cursor-pointer hover:scale-105 transition-transform duration-300">search</span>
@@ -117,6 +119,55 @@
 				</div>
 			</nav>
 		</header>
+
+		<!-- Mobile menu drawer -->
+		<div id="mobile-menu" class="fixed inset-0 z-[60] hidden md:hidden" role="dialog" aria-modal="true" aria-labelledby="mobile-menu-title">
+			<div id="mobile-menu-backdrop" class="absolute inset-0 bg-black/70 backdrop-blur-md"></div>
+			<aside class="relative h-full w-[85%] max-w-sm bg-surface border-r border-outline-variant flex flex-col">
+				<div class="flex justify-between items-center px-6 h-20 border-b border-outline-variant">
+					<span id="mobile-menu-title" class="font-headline-md text-headline-md text-primary tracking-tighter">WILD FRAME</span>
+					<button id="mobile-menu-close" aria-label="Close menu" class="text-primary">
+						<span class="material-symbols-outlined">close</span>
+					</button>
+				</div>
+				<nav class="flex flex-col p-6 gap-2 font-label-md text-label-md uppercase tracking-widest">
+					<a class="text-on-surface hover:text-primary transition-colors py-4 border-b border-outline-variant/30 no-underline" href="/">Home</a>
+					<a class="text-on-surface hover:text-primary transition-colors py-4 border-b border-outline-variant/30 no-underline" href="/gallery">Gallery</a>
+					<a class="text-on-surface hover:text-primary transition-colors py-4 border-b border-outline-variant/30 no-underline" href="/blog">Blog</a>
+					<a class="text-on-surface hover:text-primary transition-colors py-4 border-b border-outline-variant/30 no-underline" href="/shop">Shop</a>
+					<a class="text-on-surface hover:text-primary transition-colors py-4 no-underline" href="/cart">Cart</a>
+				</nav>
+			</aside>
+		</div>
+
+		<script is:inline>
+			(() => {
+				const toggle = document.getElementById('mobile-menu-toggle');
+				const menu = document.getElementById('mobile-menu');
+				const closeBtn = document.getElementById('mobile-menu-close');
+				const backdrop = document.getElementById('mobile-menu-backdrop');
+				if (!toggle || !menu || !closeBtn || !backdrop) return;
+
+				const open = () => {
+					menu.classList.remove('hidden');
+					toggle.setAttribute('aria-expanded', 'true');
+					document.body.style.overflow = 'hidden';
+				};
+				const close = () => {
+					menu.classList.add('hidden');
+					toggle.setAttribute('aria-expanded', 'false');
+					document.body.style.overflow = '';
+				};
+
+				toggle.addEventListener('click', open);
+				closeBtn.addEventListener('click', close);
+				backdrop.addEventListener('click', close);
+				document.addEventListener('keydown', (e) => {
+					if (e.key === 'Escape' && !menu.classList.contains('hidden')) close();
+				});
+			})();
+		</script>
+
 		<slot />
 		<footer class="w-full mt-20 border-t border-outline-variant bg-surface-container-lowest dark:bg-surface-container-lowest">
 			<div class="flex flex-col md:flex-row justify-between items-start px-margin-mobile md:px-margin-desktop py-20 max-w-container-max mx-auto gap-12">
